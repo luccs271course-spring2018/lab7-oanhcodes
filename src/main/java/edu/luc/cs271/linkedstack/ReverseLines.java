@@ -4,34 +4,18 @@ import java.util.Scanner;
 
 public class ReverseLines {
 
-    private static LinkedStack<String> inputStack = new LinkedStack<>();
+  private static LinkedStack<String> inputStack = new LinkedStack<>();
 
-    public static void main(String[] args) {
+  public static void main(final String[] args) {
+    final Scanner input = new Scanner(System.in);
+    printReverse(input);
+  }
 
-        System.out.println("Enter multiple lines. Press enter twice to reverse the lines!");
+  public static void fillStack(String inputString) {
+    inputStack.push(inputString);
+  }
 
-        final Scanner input = new Scanner(System.in);
-        String line;
-
-        while (input.hasNextLine()) {
-            line = input.nextLine();
-            if (line.equals("")) {
-                break;
-            } else {
-                fillStack(line);
-            }
-        }
-
-        printReverse(inputStack);
-    }
-
-    public static void fillStack(String inputString) {
-        inputStack.push(inputString);
-    }
-
-    public static void printReverse(LinkedStack<String> lineStack) {
-        while (!lineStack.isEmpty()) {
-            System.out.println(lineStack.pop());
-        }
-    }
+  private static void printReverse(final Scanner input) {
+    // TODO recursively read and print successive input lines until EOF, then print them out in reverse order
+  }
 }

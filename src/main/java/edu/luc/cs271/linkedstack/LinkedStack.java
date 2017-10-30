@@ -9,8 +9,6 @@ public class LinkedStack<E> implements IStack<E> {
   /** The topmost node of this stack. The stack gets pushed down from here. */
   private Node<E> top;
 
-  private List<E> dataList;
-
   @Override
   public E push(final E obj) {
     top = new Node<>(obj, top);
@@ -44,11 +42,39 @@ public class LinkedStack<E> implements IStack<E> {
 
   @Override
   public List<E> asList() {
-    dataList = new ArrayList<>();
-    while (top != null) {
-      dataList.add(top.data);
-      top = top.next;
+    final ArrayList<E> result = new ArrayList<>();
+    populateList(top, result); // Done replace null with the right reference
+    return result;
+  }
+
+  private void populateList(final Node<E> curr, final List<E> result) {
+    // Done recursively populate the list in the desired order
+    // Base Case
+    if (curr == null) {
+      return;
     }
-    return dataList;
+    //Append the data to the end of this list.
+    result.add(curr.data);
+    populateList(curr.next, result);
+
+  }
+
+  @Override
+  public List<E> asFifoList() {
+    final ArrayList<E> result = new ArrayList<>();
+    populateFifoList(top, result); // Done replace null with the right reference
+    return result;
+  }
+
+  private void populateFifoList(final Node<E> curr, final List<E> result) {
+    // Done recursively populate the list in the desired order
+    // Base Case
+    if (curr == null) {
+      return;
+    }
+    //Append the data to the end of this list.
+    result.add(0, curr.data);
+    populateFifoList(curr.next, result);
+
   }
 }
