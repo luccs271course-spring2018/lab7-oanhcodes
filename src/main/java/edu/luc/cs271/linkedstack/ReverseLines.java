@@ -1,5 +1,6 @@
 package edu.luc.cs271.linkedstack;
 
+import java.util.*;
 import java.util.Scanner;
 
 public class ReverseLines {
@@ -11,11 +12,17 @@ public class ReverseLines {
     printReverse(input);
   }
 
-  public static void fillStack(String inputString) {
-    inputStack.push(inputString);
-  }
-
   private static void printReverse(final Scanner input) {
-    // TODO recursively read and print successive input lines until EOF, then print them out in reverse order
+    // Done recursively read and print successive input lines until EOF, then print them out in
+    String line = input.nextLine();
+    if (line.isEmpty()) {
+      for (String s : inputStack.asList()) {
+        System.out.println(s);
+      }
+      return;
+    }
+    inputStack.push(line);
+    System.out.println(inputStack.peek());
+    printReverse(input);
   }
 }

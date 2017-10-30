@@ -53,10 +53,9 @@ public class LinkedStack<E> implements IStack<E> {
     if (curr == null) {
       return;
     }
-    //Append the data to the end of this list.
+    // Append the data to the end of this list.
     result.add(curr.data);
     populateList(curr.next, result);
-
   }
 
   @Override
@@ -72,9 +71,8 @@ public class LinkedStack<E> implements IStack<E> {
     if (curr == null) {
       return;
     }
-    //Append the data to the end of this list.
+    // Append the data to the end of this list.
     result.add(0, curr.data);
     populateFifoList(curr.next, result);
-
   }
 }
