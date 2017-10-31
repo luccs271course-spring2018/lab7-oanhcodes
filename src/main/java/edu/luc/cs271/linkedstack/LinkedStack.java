@@ -75,7 +75,7 @@ public class LinkedStack<E> implements IStack<E> {
     if (curr == null) {
       return;
     }
-    // Append the data to the end of this list.
+    //Append the data to the front of this list.
     result.add(0, curr.data);
     populateFifoList(curr.next, result);
   }
